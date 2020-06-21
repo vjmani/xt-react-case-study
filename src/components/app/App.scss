@@ -1,0 +1,207 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+$white: #ffffff;
+$grey-1: #e3e4e6;
+$grey-2: #bbbbbb;
+$grey-3: #adafae;
+$black: #000000;
+$grey-4: #848484;
+$grey-5: #585858;
+$orange: #b45f04;
+
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 2;
+  font-family: "Arial";
+}
+
+#root {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+}
+
+h2 {
+  text-transform: capitalize;
+}
+
+form {
+  width: 100%;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.btn-default {
+  border: 1px solid $grey-2;
+  background-color: $grey-1;
+  color: $black;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+.small-font {
+  font-size: 12px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  body {
+    flex-flow: column;
+  }
+
+  .main,
+  .filters {
+    width: 100%;
+  }
+
+  #search-by-name {
+    width: 275px;
+  }
+}
+
+.form-inline .form-group {
+  display: flex;
+  flex: 0 0 auto;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.form-inline .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+}
+
+@media only screen and (min-width: 992px) {
+  .filters {
+    width: 25%;
+  }
+
+  .main {
+    width: 75%;
+  }
+}
+
+.filters {
+  display: flex;
+  flex-flow: column;
+  padding: 20px;
+
+  .filter-box {
+    border: 1px solid $grey-3;
+    height: auto;
+    min-height: 200px;
+    margin-bottom: 10px;
+
+    &-section {
+      display: flex;
+      flex-flow: column;
+      width: 100%;
+    }
+  }
+
+  .filter-checkbox {
+    margin-right: 6px;
+  }
+}
+
+.main {
+  display: flex;
+  padding: 20px;
+  flex-flow: column;
+
+  .search-box {
+    justify-content: space-between;
+  }
+
+  .result-row {
+    padding: 15px 0;
+  }
+
+  .applied-filter {
+    background-color: $grey-2;
+    color: $white;
+    border: 1px solid $grey-2;
+    border-radius: 4px;
+    padding: 5px 15px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+  }
+
+  .sort-by-form {
+    padding-top: 32px;
+  }
+
+  .search-results {
+    background-color: $black;
+  }
+
+  .result-card {
+    background-color: $grey-5;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    min-height: 448px;
+
+    figure {
+      position: relative;
+    }
+
+    figcaption {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      background-color: $black;
+      opacity: 0.8;
+      color: $white;
+      padding: 2px 10px;
+    }
+
+    &-details {
+      padding: 0 8px 8px;
+
+      .result-attribute {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $grey-4;
+        }
+
+        &-name {
+          color: $grey-4;
+        }
+
+        &-data {
+          color: $orange;
+        }
+      }
+    }
+  }
+}
