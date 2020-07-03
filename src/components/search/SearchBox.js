@@ -3,7 +3,7 @@ import React from "react";
 class SearchBox extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = { value: "", showClearBtn: false };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -14,7 +14,12 @@ class SearchBox extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value, showClearBtn:  event.target.value !== '' ? true : false });
+  }
+
+  handleClear() {
+    this.setState({ value: "", showClearBtn: false });
+    this.props.filterData();
   }
 
   render() {
@@ -23,12 +28,23 @@ class SearchBox extends React.Component {
         <label htmlFor="search-by-name">Search By Name</label>
         <form className="form-inline" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <input type="text" onChange={this.handleChange} className="form-control" value={this.state.value}/>
+            <input
+              type="text"
+              onChange={this.handleChange}
+              className="form-control"
+              value={this.state.value}
+            />
           </div>
           <button type="submit" className="btn btn-default">
             Search
           </button>
-          <button id="clear-search-btn" className="btn btn-primary">
+          <button
+            type="button"
+            onClick={() => {
+              this.handleClear();
+            }}
+            className={`btn btn-primary ${!this.state.showClearBtn ? "hidden" : ""}`}
+          >
             Clear
           </button>
         </form>

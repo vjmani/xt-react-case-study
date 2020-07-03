@@ -73,6 +73,10 @@ form {
     flex-flow: column;
   }
 
+  #root {
+    flex-direction: column;
+  }
+
   .main,
   .filters {
     width: 100%;
@@ -81,6 +85,22 @@ form {
   #search-by-name {
     width: 275px;
   }
+
+  form {
+    margin-bottom: 10px;
+
+    input {
+      width: 100% !important;
+    }
+
+    .form-group {
+      min-width: 320px;
+    }
+  }
+}
+
+select {
+  margin-top: 34px;
 }
 
 .form-inline .form-group {
@@ -95,6 +115,20 @@ form {
   display: inline-block;
   width: auto;
   vertical-align: middle;
+}
+
+.close-filter {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.no-result-found {
+  color: #fff;
+  width: 100%;
+  text-align: center;
 }
 
 @media only screen and (min-width: 992px) {
@@ -128,6 +162,10 @@ form {
   .filter-checkbox {
     margin-right: 6px;
   }
+}
+
+.character-col {
+  display: flex;
 }
 
 .main {

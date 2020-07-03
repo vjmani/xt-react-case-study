@@ -62,7 +62,10 @@ class App extends React.Component {
 
   handleFilter = (name, value, isSelected) => {
     this.props.updateFilters(name, value, isSelected);
+    this.filterData();
+  };
 
+  filterData = () => {
     const filterKeys = Object.keys(this.props.filters);
     const selectedFilters = {};
     filterKeys.map((key) => {
@@ -98,17 +101,17 @@ class App extends React.Component {
   };
 
   searchByName = (name) => {
-    const serachResults = this.props.characters.data.filter((res) => {
+    const searchResults = this.state.characters.filter((res) => {
       const regx = new RegExp(name.toLowerCase());
       const resNameCheck = res.name.toLowerCase().match(regx);
       return resNameCheck !== null;
     });
 
-    this.setState({ characters: serachResults });
+    this.setState({ characters: searchResults });
   };
 
   sortResults = (order) => {
-    let results = this.props.characters.data;
+    let results = this.state.characters;
     if (order === ASC_ORDER) {
       results.sort((a, b) => {
         return a.id - b.id;
@@ -133,6 +136,8 @@ class App extends React.Component {
           characters={this.state.characters}
           searchByName={this.searchByName}
           sortResults={this.sortResults}
+          filterData={this.filterData}
+          filters={this.state.filters}
         />
       </>
     );
